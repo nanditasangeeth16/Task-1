@@ -1,0 +1,146 @@
+Write ups
+
+
+Challenge 9
+
+Since it is a barcode we use zbarimg
+
+Command used
+
+zbarimg chall9.png 
+
+Flag : flag{B4r_c0de_scanned}
+
+
+
+Challenge 2
+
+Since it is a audio file we examine it using Sonic Visualiser( check in the spectrogram layer)
+
+Command used 
+
+Sonic-visualiser chall2.wav
+
+Flag:inctf{did_audacity_work_???}
+
+
+
+Challenge 7
+
+Command used
+
+stegsnow -C -p Ozymandias chall7.txt
+
+Flag : inctf{snow_snow_snow_stegsnowwwww....}
+
+
+
+Challenge 8 
+
+We use stegsolve 
+
+Command used 
+
+java  -jar stegsolve.jar
+
+We can find the flag in green plane 0
+
+Flag:inctf{e5c29838a74ab34fa7b9d18ca1a8d07d679c8aa3}
+
+
+
+Challenge 1
+
+When we use exiftool on the file we get a comment which is in base 64 but has an error so we corrected the base 64 using an online tool
+
+Command used 
+
+Exiftool chall1.jpeg
+
+Base 64 obtained : Njk2ZTYzNzQ2NjdiNTc2ODM0NzQ1ZjM0NzI2NTVmNzkzMDc1MjAzMDVmMzAyMDY5NmU2NzIwMjA2\nMTc0N2Q=
+
+Corrected base 64:
+Njk2ZTYzNzQ2NjdiNTc2ODM0NzQ1ZjM0NzI2NTVmNzkzMDc1MjAzMDVmMzAyMDY5NmU2NzIwMjA2MTc0N2Q=
+
+Then used an online base 64 decoder , we get a hexadecimal
+
+696e6374667b576834745f3472655f79307520305f3020696e67202061747d
+
+On decoding this hexadecimal we get the flag
+
+Flag : inctf{Wh4t_4re_y0u 0_0 ing  at}
+
+
+
+Challenge 5
+
+We use pdf crack for this challenge
+
+Command used 
+
+pdfcrack -f chall5.pdf -w /home/user/Downloads/rockyou.txt
+
+Password obtained : 852456852456
+
+Flag : inctf{5ddf7d70fcc387ac24660e3fff6129efd0b6e2889cd1339dd1}
+
+
+
+Challenge Missing heroes 
+
+When we look into the metadata of each image we see that gps latitudes and longitudes are given but they are not latitudes and longitudes but ascii numbers so when we convert each ascii number into its character we get the flag 
+
+Flag : inctf{d3f4a51}
+
+
+
+Challenge 3
+
+Use fcrackzip to retrieve the password
+
+Password : johnjandroveclarkmichaelkent
+
+Extract the image use zsteg in it and check the lsb data and extract it
+
+Command used
+
+fcrackzip -v -u -D -p rockyou.txt chall3.zip
+zsteg flag.png
+zsteg b1 bgr lsb xy flag.png | strings | cat > flag.txt
+
+Search for the flag in text file
+
+Flag : inctf{3ach_4nd_3v3ry_s3cre7_inf0rm4t10n_w1ll_b3_kn0wn_by_wir3shark!!!!!_:)}
+
+
+
+Challenge 6
+
+We use steghide and to get the passphrase with the dictionary attack
+
+ Command used 
+
+steghide  extract -sf chall6.jpg | john rockyou.txt
+
+Flag : inctf{this_is_4n_e4sY_!}
+
+
+
+Challenge 10
+
+In this challenge you just have to use zsteg and extract the lsb data and then we store it into a separate text file
+
+Command used 
+zsteg -E b1,bgr,lsb,xy chall10.png | strings | cat > flag.txt
+Flag : inctf{y0u_g0t_th3_fl4g_d1d_y0u_le4rn_any7hing_?}
+ 
+
+
+
+
+
+ 
+
+
+
+
